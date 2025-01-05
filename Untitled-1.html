@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To se smeje</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  
+    height: 100vh; 
+    object-fit: cover; 
+    z-index: -2;
+    margin: 0; 
+    padding: 0; 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  
+    height: 100vh; 
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    margin: 0; 
+    padding: 0; 
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+body {
+    margin: 0; 
+    font-family: 'Arial', sans-serif;
+    color: white;
+    height: 100vh; 
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+}
+
+.title-section, .about-section, .tattooist-section, .contact-slide {
+    width: 100vw; 
+    margin: 0; 
+    padding: 0; 
+}
+
+.title-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+    font-size: 12vw;
+    margin: 0;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.about-section, .tattooist-section {
+    min-height: 100vh; 
+    background-color: #edeced; 
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    text-align: center;
+}
+
+.black-slide {
+    height: 100vh;
+    width: 100vw;
+    background-color: black; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    gap: 40px; 
+    width: 100%; 
+    max-width: 1400px; 
+    padding: 0 20px; 
+}
+
+.contact-text {
+    max-width: 800px;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+.contact-image img {
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+        .title-section {
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            font-size: 12vw;
+            margin: 0;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        .scroll-down {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            cursor: pointer;
+            animation: bounce 1s infinite;
+            color: white;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .about-section {
+            min-height: 100vh; 
+            background-color: #edeced; 
+            color: black; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 50px;
+            text-align: center;
+        }
+        .about-text {
+            font-size: 1.5rem;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .carousel-container {
+        position: relative;
+        width: 100%;  
+        overflow: hidden;  
+        background-color: #edeced;  
+        padding: 0; 
+        }
+
+        .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%; 
+        }
+
+        .carousel-item {
+        min-width: 100%; 
+        display: flex;
+        justify-content: center;
+        }
+
+        .carousel-item img {
+        max-width: 100%; 
+        height: auto;
+        object-fit: contain; 
+        border-radius: 10px;
+        }
+
+        .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+        .tattooist-section {
+            padding: 50px;
+            background-color: #edeced;
+            color: black;
+            text-align: center;
+        }
+        .tattoo-artist {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .artist-text {
+            max-width: 500px;
+            text-align: left;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+        .artist-image img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        strong {
+            font-size: 1.2rem;
+        }
+   
+.black-slide {
+    height: 100vh;  
+    width: 100vw;   
+    background-color: black;  
+    color: white;   
+    display: flex;  
+    justify-content: center; 
+    align-items: center;     
+    text-align: left;        
+    box-sizing: border-box;  
+}
+
+.contact-text {
+    max-width: 800px;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: white;  
+}
+
+.contact-image img {
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 15vw; /* Zmenší text na menších obrazovkách */
+    }
+
+    .about-text, .tattoo-artist p, .contact-text {
+        font-size: 1.2rem;
+    }
+
+    .carousel-btn {
+        font-size: 1.5rem; /* Zmenší velikost tlačítek */
+    }
+
+    .tattoo-artist {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-image img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-section {
+        padding: 0 10px;
+    }
+
+    .carousel-item img {
+        max-width: 90%;
+    }
+
+    .tattooist-section {
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .contact-content {
+        padding: 10px;
+    }
+}
+</style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="tattoo-asmr-oozytattoo-1080-publer.io.mp4" type="video/mp4">
+        Váš prohlížeč nepodporuje video tag.
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="title-section">
+        <h1>TO SE SMEJE</h1>
+        <a href="#about" class="scroll-down">↓ Scroll dolů</a>
+    </div>
+
+    <div id="about" class="about-section">
+        <h2>O NÁS</h2>
+        <p class="about-text">
+            V našem tetovacím studiu klademe důraz na kvalitní a osobní přístup ke každému zákazníkovi. Naše tatérky jsou zkušené profesionálky, které se specializují na různé styly tetování – od jemného minimalismu po realistické portréty a přírodní motivy. Snažíme se, aby každé tetování bylo nejen uměleckým dílem, ale i odrazem osobnosti našeho klienta.<br><br>
+            Naše studio je místem, kde se budete cítit v pohodlí a bezpečí, a kde se každé tetování stává příběhem, který zůstane navždy.
+        </p>
+    </div>
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item">
+               <!-- <img src="file:///C:/Users/User/Downloads/png%20(1)" alt="Obrázek 1">-->
+               <img src="png%20(1)" alt="Obrázek 1">
+            </div>
+            <div class="carousel-item">
+                <img src="png%20(7)" alt="Obrázek 2">
+            </div>
+            <div class="carousel-item">
+                <img src="png%20(2)" alt="Obrázek 3">
+            </div>
+            <div class="carousel-item">
+                <img src="png" alt="Obrázek 4">
+            </div>
+            <div class="carousel-item">
+                <img src="png%20(4)" alt="Obrázek 5">
+            </div>
+            <div class="carousel-item">
+                <img src="png%20(5)" alt="Obrázek 6">
+            </div>
+        </div>
+        <button class="carousel-btn prev-btn">←</button>
+        <button class="carousel-btn next-btn">→</button>
+    </div>
+    
+    
+    <div class="tattooist-section">
+        <h2>Naše tatérky</h2>
+
+        <div class="tattoo-artist">
+            <div class="artist-image">
+                <img src="mia" alt="Michaela 'Mia' Kováčová">
+            </div>
+            <div class="artist-text">
+                <h3>Michaela "Mia" Kováčová</h3>
+                <p>
+                    <strong>Osobnost:</strong> Mia je kreativní a přátelská tatérka, která má ráda jednoduché, ale výrazné designy. Vždy se snaží zachytit osobnost každého zákazníka v jejich tetování. Má ráda minimalismus a geometrické tvary.<br>
+                    <strong>Praxe:</strong> Mia začala tetovat ve 23 letech a za posledních 5 let si získala solidní klientelu v menším studiu v Brně. Neustále se vzdělává a navštěvuje workshopy s celosvětově známými tatéry.<br>
+                    <strong>Typy tetování:</strong> Minimalistické geometrické tvary, line art, malé přírodní motivy (květiny, hory), abstraktní designy.<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tattoo-artist">
+            <div class="artist-image">
+                <img src="adee" alt="Lenka 'Lenny' Novotná">
+            </div>
+            <div class="artist-text">
+                <h3>Lenka "Lenny" Novotná</h3>
+                <p>
+                    <strong>Osobnost:</strong> Lenny je sebevědomá a vášnivá tatérka, která se zaměřuje na detailní realistické portréty a zvířata. Má spoustu energie a vždy má co říct, což ji činí oblíbenou mezi zákazníky.<br>
+                    <strong>Praxe:</strong> S tetováním začala v 19 letech
+                    <strong>Typy tetování:</strong> Realistické portréty lidí a zvířat, detailní květiny, krajiny s realistickými prvky, černobílé tetování s jemnými stíny.<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tattoo-artist">
+            <div class="artist-image">
+                <img src="lenny" alt="Adéla 'Adee' Králová">
+            </div>
+            <div class="artist-text">
+                <h3>Adéla "Adee" Králová</h3>
+                <p>
+                    <strong>Osobnost:</strong> Adee je klidná a zaměřená na přírodu a spiritualitu. Je známá pro svůj jemný přístup k zákazníkům a pečlivé plánování každého tetování, aby odpovídalo osobním hodnotám klienta.<br>
+                    <strong>Praxe:</strong> Adee tetuje už přes 8 let a má za sebou zkušenosti jak v domácích studiích, tak i v zahraničí. Před 3 lety se rozhodla otevřít své vlastní studio zaměřené na přírodní motivy a symboliku.<br>
+                    <strong>Typy tetování:</strong> Mandaly, přírodní motivy jako stromy, zvířata, různé symboly (např. lunární cyklus, duchovní motivy), geometrické vzory spojené s přírodou.<br>
+                </p>
+            </div>
+        </div>
+        <div class="black-slide">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h2>Kontakty</h2>
+                    <p>
+                        <strong>Email:</strong> tosesmeje@gmail.com<br>
+                        <strong>Adresa:</strong> Hradec Králové, Gočarova 55<br>
+                        <strong>Tel. číslo:</strong> 223654179
+                    </p>
+                </div>
+                <div class="contact-image">
+                    <img src="png%20(6)" alt="Kontakt Obrázek">
+                </div>
+            </div>
+        </div>
+        
+    
+        <footer>
+            Tento web vytvořila Polina Tishaninova © 2025.
+        </footer>
+        <script>
+            document.querySelector('.scroll-down').addEventListener('click', function(event) {
+                event.preventDefault(); 
+                window.scrollTo({
+                    top: document.querySelector('#about').offsetTop, 
+                    behavior: 'smooth'  
+                });
+            });
+            </script>
+
+        </script>
+
+        <script>
+           let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-item');
+const totalItems = items.length;
+
+document.querySelector('.prev-btn').addEventListener('click', () => {
+    currentIndex = (currentIndex === 0) ? totalItems - 1 : currentIndex - 1;
+    updateCarousel();
+});
+
+document.querySelector('.next-btn').addEventListener('click', () => {
+    currentIndex = (currentIndex === totalItems - 1) ? 0 : currentIndex + 1;
+    updateCarousel();
+});
+
+function updateCarousel() {
+    const offset = -currentIndex * 100; 
+    document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
+}
+
+
+        </script>
+    </body>
+    </html>
